@@ -1,104 +1,89 @@
-# DS-Project
+# Traffic Management Simulator
 
-# Smart Traffic Management System Simulator
+A C++ simulation system for urban traffic flow optimization using advanced data structures and algorithms.
 
-## Introduction
+**Status:** Archived / Refactored
 
-The Smart Traffic Management System Simulator is designed to replicate and optimize real-world urban traffic flow using advanced data structures and algorithms. This system focuses on efficient traffic management, incorporating features such as dynamic vehicle routing, real-time traffic signal control, congestion management, and emergency vehicle handling. The goal is to simulate and improve traffic conditions in a city, ensuring smoother traffic flow and better management of road disruptions.
+## Description
 
-Key features of the system include:
-
--   A **City Traffic Network** represented as a weighted, directed graph, modeling intersections and roads.
--   A **Vehicle Routing System** powered by Dijkstra's Algorithm to find optimal routes dynamically.
--   **Traffic Signal Management** using priority queues for adjusting signal timings based on congestion.
--   **Congestion Monitoring** and rerouting using BFS/DFS to alleviate traffic jams.
--   **Emergency Vehicle Handling** with special routing to clear paths for urgent vehicles.
--   **Accident and Road Closure Simulation** to handle disruptions in the road network.
--   A **Simulation Dashboard** to visualize and control the system in real-time.
-
-This simulator is built using C++ and leverages various data structures like graphs, priority queues, and heaps for efficient traffic management and optimization.
+The Traffic Management Simulator replicates and optimizes real-world urban traffic flow. It models a city's road network as a weighted, directed graph and provides dynamic vehicle routing, real-time traffic signal control, congestion management, and emergency vehicle handling.
 
 ## Features
 
-### 1. **City Traffic Network**
+- **City Traffic Network** — Weighted directed graph modeling intersections and roads
+- **Vehicle Routing** — Dijkstra's Algorithm for optimal path calculation
+- **Traffic Signal Management** — Priority queue-based signal timing optimization
+- **Congestion Monitoring** — BFS/DFS-based traffic analysis and rerouting
+- **Emergency Vehicle Handling** — Priority routing with signal override
+- **Road Closure Simulation** — Dynamic disruption handling and rerouting
 
--   Represented as a weighted, directed graph where:
-    -   **Nodes**: Intersections.
-    -   **Edges**: Roads between intersections, with weights representing travel times or congestion levels.
--   Supports dynamic addition and removal of roads or intersections.
--   Can visualize the graph structure in a text-based or graphical form.
+## Project Structure
 
-### 2. **Vehicle Routing System**
-
--   Calculates the shortest or fastest route for vehicles dynamically.
--   Uses **Dijkstra’s Algorithm** to find the optimal path.
--   Recalculates routes dynamically based on changes in traffic conditions.
--   Tracks vehicle movement across the network.
-
-### 3. **Traffic Signal Management**
-
--   Controls traffic lights at intersections to minimize congestion.
--   Uses a **priority queue** to manage incoming roads based on vehicle density.
--   Dynamically adjusts green signal durations to reduce wait times.
--   Includes an emergency override system for critical situations.
-
-### 4. **Congestion Monitoring**
-
--   Monitors vehicle counts on each road segment.
--   Identifies congested roads and reroutes traffic using **BFS** or **DFS**.
--   Displays congestion levels for analysis.
-
-### 5. **Emergency Vehicle Handling**
-
--   Provides special routing for emergency vehicles to minimize delays.
--   Overrides normal traffic signal operations to clear paths.
--   Uses an **A\* Algorithm** (mentioned as a feature, ensure implementation exists) to find the fastest possible route.
--   Restores normal traffic flow once the emergency vehicle has passed.
-
-### 6. **Accident and Road Closure Simulation**
-
--   Simulates disruptions such as road closures or accidents.
--   Blocks specific roads or intersections dynamically.
--   Recalculates affected vehicle routes and updates the traffic network.
--   Monitors system performance during disruptions.
-
-### 7. **Simulation Dashboard**
-
--   Provides an interactive interface to visualize and control the simulation.
--   Displays traffic flow, congestion levels, and signal statuses.
--   Allows manual addition or removal of vehicles.
--   Generates logs for all system actions, including rerouting and signal changes.
-
-## Data Structures and Algorithms
-
--   **Graph**: Represents the city's road network with adjacency lists (`Graph.h`).
--   **Priority Queue**: Manages road order for signal adjustments (`PriorityQueue.cpp`).
--   **Min-Heap**: Efficiently identifies roads with the highest congestion or used in Dijkstra's (`Minheap.cpp`).
--   **Hash Table**: Tracks real-time vehicle counts on roads (`HashTable.cpp`).
--   **Dijkstra’s Algorithm**: Finds shortest paths for vehicles (`Dijkstra.cpp`).
--   **A\* Algorithm**: Handles emergency vehicle routing (Mentioned in features).
--   **BFS/DFS**: Detects congestion or inaccessible paths (Used in Graph class `Graph.cpp`).
--   **Other Structures:** LinkedList (`List.cpp`), Queue (`Queue.cpp`), Stack (`Stack.cpp`), Vector (`Vector.cpp`).
-
-### Code Component Details:
-
-*(Details for Graph.cpp, Dijkstra.cpp, HashTable.cpp, List.cpp, Minheap.cpp, ParseFiles.cpp, PriorityQueue.cpp, Queue.cpp, Stack.cpp, Vector.cpp)*
+```
+traffic-management-simulator-cpp/
+├── main.cpp           # Entry point and simulation driver
+├── Graph.cpp          # Graph representation with adjacency lists, BFS, DFS
+├── Dijkstra.cpp       # Shortest path algorithm implementation
+├── HashTable.cpp      # Hash table for congestion tracking
+├── MinHeap.cpp        # Min-heap data structure
+├── PriorityQueue.cpp  # Priority queue implementation
+├── ParseFiles.cpp     # CSV file parsing for simulation data
+├── Vector.cpp         # Custom dynamic array implementation
+├── List.cpp           # Linked list implementation
+├── Queue.cpp          # Queue data structure
+├── Stack.cpp          # Stack data structure
+├── LICENSE            # MIT License
+├── CONTRIBUTING.md    # Contribution guidelines
+├── CHANGELOG.md       # Version history
+└── README.md          # This file
+```
 
 ## Requirements
 
--   **Programming Language**: C++ (likely C++11 or newer)
+- C++ compiler with C++11 support (g++, clang++, MSVC)
+- Standard C++ library
 
-## Setup and Compilation
+## Installation
 
-1.  **Clone:** `git clone https://github.com/ApatheticMioz/traffic-management-simulator-cpp.git`
-2.  **Compile:** (Example using g++, adjust based on your file structure and dependencies)
-    ```bash
-    g++ main.cpp game.cpp Dijkstra.cpp HashTable.cpp ParseFiles.cpp *.cpp -o traffic_simulator -std=c++11
-    ```
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/ApatheticMioz/traffic-management-simulator-cpp.git
+   cd traffic-management-simulator-cpp
+   ```
 
-## How to Run
-```bash
-./traffic_simulator
-```
+2. **Compile:**
+   ```bash
+   g++ -std=c++11 -Wall -o traffic_simulator main.cpp
+   ```
 
-Follow simulation prompts.
+## Usage
+
+1. **Prepare CSV data files** in the project directory:
+   - `road_network.csv` — Road connections (Intersection1, Intersection2, TravelTime)
+   - `vehicles.csv` — Vehicle data (VehicleID, StartIntersection, EndIntersection)
+   - `traffic_signals.csv` — Signal timings (Intersection, GreenTime)
+   - `road_closures.csv` — Blocked roads (Intersection1, Intersection2, Status)
+   - `emergency_vehicles.csv` — Emergency vehicles (VehicleID, Start, End, Priority)
+
+2. **Run the simulator:**
+   ```bash
+   ./traffic_simulator
+   ```
+
+## Data Structures & Algorithms
+
+| Component | Implementation | Purpose |
+|-----------|---------------|---------|
+| Graph | Adjacency Lists | Road network representation |
+| Dijkstra's Algorithm | Min-Heap optimized | Shortest path routing |
+| Hash Table | Random probing | Vehicle count tracking |
+| BFS/DFS | Stack/Queue-based | Congestion detection |
+| Priority Queue | Heap-based | Signal timing management |
+
+## License
+
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
+
+## Contributing
+
+Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.

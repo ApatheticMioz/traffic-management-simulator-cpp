@@ -1,0 +1,53 @@
+# Compiled Object files
+*.o
+*.obj
+
+# Executables
+*.exe
+*.out
+traffic_simulator
+main
+
+# Libraries
+*.lib
+*.a
+*.so
+*.dll
+
+# Debug files
+*.dSYM/
+*.pdb
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.cproject
+.settings/
+
+# System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Build directories
+build/
+bin/
+obj/
+dist/
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# CSV data files (user-provided)
+*.csv
