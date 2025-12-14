@@ -49,5 +49,6 @@ cmake_install.cmake
 *.temp
 *.log
 
-# CSV data files (user-provided)
+# CSV data files (user-provided, except examples)
 *.csv
+!examples/*.csv

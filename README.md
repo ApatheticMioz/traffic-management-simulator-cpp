@@ -32,6 +32,7 @@ traffic-management-simulator-cpp/
 ├── List.cpp           # Linked list implementation
 ├── Queue.cpp          # Queue data structure
 ├── Stack.cpp          # Stack data structure
+├── examples/          # Sample CSV data files
 ├── LICENSE            # MIT License
 ├── CONTRIBUTING.md    # Contribution guidelines
 ├── CHANGELOG.md       # Version history
@@ -55,15 +56,21 @@ traffic-management-simulator-cpp/
    ```bash
    g++ -std=c++11 -Wall -o traffic_simulator main.cpp
    ```
+   > Note: main.cpp includes all other source files via `#include` directives, so only main.cpp needs to be compiled.
 
 ## Usage
 
-1. **Prepare CSV data files** in the project directory:
+1. **Prepare CSV data files** in the project directory (see `examples/` for sample files):
    - `road_network.csv` — Road connections (Intersection1, Intersection2, TravelTime)
    - `vehicles.csv` — Vehicle data (VehicleID, StartIntersection, EndIntersection)
    - `traffic_signals.csv` — Signal timings (Intersection, GreenTime)
    - `road_closures.csv` — Blocked roads (Intersection1, Intersection2, Status)
    - `emergency_vehicles.csv` — Emergency vehicles (VehicleID, Start, End, Priority)
+
+   To use the example files:
+   ```bash
+   cp examples/*.csv .
+   ```
 
 2. **Run the simulator:**
    ```bash
